@@ -1,11 +1,11 @@
 streamlit
 streamlit-webrtc
-av
 opencv-python-headless
 mediapipe
 scikit-learn
 joblib
 numpy
+pandas
 pillow
 arabic-reshaper
 python-bidi
