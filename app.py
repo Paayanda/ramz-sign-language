@@ -49,6 +49,14 @@ fa_labels = {
 
 FEATURE_COLS = [f"{a}{i}" for i in range(21) for a in "xyz"]
 
+RTC_CONFIGURATION = {
+    "iceServers": [
+        {"urls": ["stun:stun.l.google.com:19302"]},
+        {"urls": ["stun:stun1.l.google.com:19302"]},
+        {"urls": ["stun:stun2.l.google.com:19302"]},
+    ]
+}
+
 
 @st.cache_resource
 def load_models():
@@ -248,9 +256,7 @@ ctx = webrtc_streamer(
     video_processor_factory=lambda: SignLanguageProcessor(
         clf, detector, threshold
     ),
-    rtc_configuration={
-        "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
-    },
+    rtc_configuration=RTC_CONFIGURATION,
     media_stream_constraints={"video": True, "audio": False},
     async_processing=True,
 )
